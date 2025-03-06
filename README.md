@@ -1,6 +1,26 @@
 # Programme de copie et renommage de fichiers pour les étudiants
 
 Ce programme permet de renommer des fichiers Excel (grille de correction) pour chaque étudiant en fonction de la liste d'étudiants téléchargée en format CSV dans Léa. Le nom du fichier est généré à partir du **DA**, **nom**, **prénom**, et un **suffixe personnalisé** que vous spécifiez.
+Il est aussi possible de **regrouper plusieurs étudiants** dans un seul fichier en utilisant une **4ᵉ colonne** optionnelle dans le fichier CSV.
+
+## ✨ Nouveauté : Regroupement d’étudiants
+
+Si la **4ᵉ colonne** du fichier CSV contient un même identifiant pour plusieurs étudiants, une seule grille sera créée pour eux.  
+Le fichier généré contiendra les **DA, noms et prénoms** de tous les étudiants du même groupe.  
+
+### 📌 Exemple :
+| DA    | Nom      | Prénom  | Groupe |
+|-------|---------|---------|--------|
+| 1234  | Dupont  | Jean    | 1      |
+| 5678  | Martin  | Alice   | 1      |
+| 9101  | Tremblay| Luc     | 2      |
+| 1121  | Roy     | Sophie  | 2      |
+| 3141  | Gagné   | Marc    | 3      |
+
+🔹 **Fichiers générés :**  
+✅ `1234_Dupont_Jean_5678_Martin_Alice_TP1.xlsx`  
+✅ `9101_Tremblay_Luc_1121_Roy_Sophie_TP1.xlsx`  
+✅ `3141_Gagné_Marc_TP1.xlsx`
 
 ## Prérequis
 
