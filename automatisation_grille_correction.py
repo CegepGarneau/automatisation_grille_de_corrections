@@ -10,20 +10,20 @@ def format_file_path(filePath):
 
 def sanitize_filename(filename):
     """ Remove invalid characters for Windows filenames and trim extra underscores. """
-    filename = re.sub(r'[\\/*?:"<>|]', '_', filename)  # Replace invalid characters
-    filename = re.sub(r'^=+', '', filename)  # Remove leading '=' (Excel issue)
-    return filename.strip("_")  # Trim underscores
+    filename = re.sub(r'[\\/*?:"<>|]', '_', filename)
+    filename = re.sub(r'^=+', '', filename)
+    return filename.strip("_")
 
-def generate_new_name(group):
+def generate_new_name(group, suffix):
     """ Generate a new filename based on a group of students. """
     name_parts = []
     for row in group:
-        part1 = sanitize_filename(str(row[0]).strip().replace(" ", "_"))  # DA
-        part2 = sanitize_filename(str(row[1]).strip().replace(" ", "_"))  # Nom
-        part3 = sanitize_filename(str(row[2]).strip().replace(" ", "_"))  # Prénom
+        part1 = sanitize_filename(str(row[0]).strip().replace(" ", "_"))
+        part2 = sanitize_filename(str(row[1]).strip().replace(" ", "_"))
+        part3 = sanitize_filename(str(row[2]).strip().replace(" ", "_"))
         name_parts.append(f"{part1}_{part2}_{part3}")
     
-    return "_".join(name_parts) + ".xlsx"
+    return "_".join(name_parts) + "_" + suffix + ".xlsx"
 
 def generate_new_names(input_file, suffix):
     """ Read CSV and generate grouped filenames. """
@@ -32,10 +32,10 @@ def generate_new_names(input_file, suffix):
     groups = defaultdict(list)
     
     for _, row in df.iterrows():
-        group_key = row.iloc[3] if len(row) > 3 and pd.notna(row.iloc[3]) else _  # Group by 4th column if exists, else individual
-        groups[group_key].append((row.iloc[0], row.iloc[1], row.iloc[2]))  # Store DA, Nom, Prénom
+        group_key = row.iloc[3] if len(row) > 3 and pd.notna(row.iloc[3]) else str(row.iloc[0])
+        groups[group_key].append((row.iloc[0], row.iloc[1], row.iloc[2]))
 
-    return {group_key: generate_new_name(group) for group_key, group in groups.items()}
+    return {group_key: generate_new_name(group, suffix) for group_key, group in groups.items()}
 
 def copy_and_rename_file(source_file, destination_folder, new_names):
     """ Copy and rename the file for each new filename in the list. """
