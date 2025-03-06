@@ -1,6 +1,6 @@
 # Programme de copie et renommage de fichiers pour les étudiants
 
-Ce programme permet de renommer des fichiers Excel (grille de correction) pour chaque étudiant en fonction des informations contenues dans un fichier CSV. Le nom du fichier est généré à partir du **DA**, **nom**, **prénom**, et un **suffixe personnalisé** que vous spécifiez.
+Ce programme permet de renommer des fichiers Excel (grille de correction) pour chaque étudiant en fonction de la liste d'étudiants téléchargée en format CSV dans Léa. Le nom du fichier est généré à partir du **DA**, **nom**, **prénom**, et un **suffixe personnalisé** que vous spécifiez.
 
 ## Prérequis
 
@@ -17,10 +17,6 @@ Rendez-vous sur **Léa** et téléchargez la liste des étudiants sous le format
 Le fichier CSV devrait ressembler à ceci :
 DA;Nom;Prénom 1234567;Dupont;Jean 2345678;Martin;Sophie ...
 
-markdown
-Copier
-Modifier
-
 ### 2. Préparer vos fichiers
 
 Assurez-vous d'avoir :
@@ -35,10 +31,6 @@ Exécutez le programme Python avec les étapes suivantes :
 1. **Téléchargez et sauvegardez le script** Python sur votre machine.
 2. **Lancez le script** en exécutant la commande suivante dans le terminal (ou invite de commande) :
 python nom_du_script.py
-
-markdown
-Copier
-Modifier
 
 3. Le programme vous demandera les chemins des fichiers nécessaires :
 - Entrez le chemin complet du fichier **CSV** contenant la liste des étudiants. Exemple :  
@@ -63,7 +55,9 @@ Modifier
 Entrez le chemin du fichier CSV avec entête contenant la liste d'étudiants en format (DA;Nom;Prénom;): C:/chemin/vers/etudiants.csv 
 Entrez le chemin de la grille de correction en format excel .xlsx: C:/chemin/vers/grille_correction.xlsx 
 Entrez le chemin du dossier de destination (destination folder): C:/chemin/vers/dossier_destination 
-Entrez le suffixe pour les fichiers (par exemple : TP1, TP2, etc.): TP2 Copied and renamed to: C:/chemin/vers/dossier_destination/1234567_Dupont_Jean_TP2.xlsx Copied and renamed to: C:/chemin/vers/dossier_destination/2345678_Martin_Sophie_TP2.xlsx ...
+Entrez le suffixe pour les fichiers (par exemple : TP1, TP2, etc.): TP2 
+Copied and renamed to: C:/chemin/vers/dossier_destination/1234567_Dupont_Jean_TP2.xlsx 
+Copied and renamed to: C:/chemin/vers/dossier_destination/2345678_Martin_Sophie_TP2.xlsx ...
 
 ### 4. Points importants
 
