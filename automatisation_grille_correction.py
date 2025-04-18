@@ -27,7 +27,7 @@ def generate_new_name(group, suffix):
 
 def generate_new_names(input_file, suffix):
     """ Read CSV and generate grouped filenames. """
-    df = pd.read_csv(input_file, header=0, encoding='ISO-8859-1', sep=';')
+    df = pd.read_csv(input_file, header=0, encoding='ISO-8859-1', sep=',')
 
     groups = defaultdict(list)
     
